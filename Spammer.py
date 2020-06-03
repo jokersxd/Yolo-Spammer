@@ -10,8 +10,15 @@ lock = threading.Lock()
 SentCounter = 0
 ErrorCounter = 0
 ctypes.windll.kernel32.SetConsoleTitleW('Yolo Spammer | Developed by jokers')
-print(Fore.WHITE + Style.BRIGHT + 'URL Code:')
-URLCode = str(input(Fore.YELLOW + '> ' + Fore.WHITE + Style.BRIGHT))
+print(Fore.WHITE + Style.BRIGHT + 'URL:')
+URL = str(input(Fore.YELLOW + '> ' + Fore.WHITE + Style.BRIGHT))
+try:
+    URLCode = URL.split('https://onyolo.com/m/')[1].split('?')[0]
+except IndexError:
+    print(' ')
+    print(Fore.RED + '[ERROR] ' + Fore.WHITE + Style.BRIGHT + 'Invalid URL')
+    input()
+    quit()
 print(Fore.WHITE + Style.BRIGHT + '\nMessage:')
 message = str(input(Fore.YELLOW + '> ' + Fore.WHITE + Style.BRIGHT))
 print(Fore.WHITE + Style.BRIGHT + '\nThreads:')
@@ -51,3 +58,4 @@ def Spammer():
 
 for i in range(amount):
     threading.Thread(target=Spammer, args=()).start()
+input()
